@@ -26,16 +26,43 @@ public class Pig {
 
     // Implement your solution here!
     public static String pigLatin(String sentence) {
-        return null;
+        /*
+         * take in the parameter and convert it into an arraylist of character arraylist
+         * search the arraylist for vowels
+         *      if the first character/index is not a vowel
+         *          (we want to remove those indexs from the arraylist until it finds a vowel)
+         *                  if we find vowel we stop
+         *                      print the parameter
+         * 
+         * Tyler's personal experience with this problem and interview:
+         *      I started out with an idea, but had a hard time wrapping my head around how to solve the problem.
+         *      Above is the idea that I had in mind, but wasn't going so well, so Alston stepped in to help out.
+         *      Overall I struggled super hard and need a lot more practice with Java and with time pressure problems.
+         */
+        
+        String[] words = sentence.split(" ");
+        String result = "";
+
+        for (String word : words) {
+            result += pigLatinSingleWord(word);
+            result +=  " ";
+        } 
+        
+        result = result.substring(0, result.length() -1);
+        
+        return result;
     }
 
-
-
-
-
-
-
-
+    private static String pigLatinSingleWord(String word) {
+        if (word.charAt(0) == 'a' || word.charAt(0) == 'e' || word.charAt(0) == 'i' || word.charAt(0) == 'o' || word.charAt(0) == 'u') {
+            return word;
+        }
+        
+        char firstLetter = word.charAt(0);
+        word = word.substring(1);
+        word = word + firstLetter;
+        return word + "ay";
+    }
 
     // Method to help with testing, you do not need to read this.
     public static void assertEqual(int testNumber, String actual, String expected) {
@@ -45,6 +72,6 @@ public class Pig {
         System.out.println("Test " + testNumber + " passed!");
         }
     }
-    }
-  
-  
+    };
+    
+    
